@@ -13,6 +13,7 @@ final class RandomEmojiGenerator
         [0x1f980, 0x1f991]
     ];
 
+    // 🎋 emoji
     const LGTM = 0x1f38b;
 
     /**
@@ -20,8 +21,8 @@ final class RandomEmojiGenerator
      */
     public static function generateRandomEmoji(): string
     {
-        // 25% chance for a LGTM emote. 🎋
-        if(rand(1, 4) === 4) {
+        // 10% chance for a LGTM emoji.
+        if(rand(1, 10) === 10) {
             return html_entity_decode('&#'.self::LGTM.';', 0, 'UTF-8');
         }
 
