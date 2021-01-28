@@ -26,15 +26,11 @@ final class RandomEmojiGenerator
             return html_entity_decode('&#'.self::LGTM.';', 0, 'UTF-8');
         }
 
-        $output = [];
-        foreach(self::UNICODE_RANGES as $range){
-            for($unicode = $range[0]; $unicode <= $range[1]; $unicode++){
-                $output[] = html_entity_decode('&#'.$unicode.';', 0, 'UTF-8');
-            }
-        }
+        $randArray = rand(0, count(self::UNICODE_RANGES) - 1);
+        $randUnicode = rand(0, count(self::UNICODE_RANGES[$randArray]) - 1);
+        $unicodeChar = self::UNICODE_RANGES[$randArray][$randUnicode];
 
-        $rand = rand(1, count($output));
-
-        return $output[$rand];
+        $output = html_entity_decode('&#'.$unicodeChar.';', 0, 'UTF-8');;
+        return $output;
     }
 }
