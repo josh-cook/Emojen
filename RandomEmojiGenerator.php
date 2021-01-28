@@ -13,11 +13,18 @@ final class RandomEmojiGenerator
         [0x1f980, 0x1f991]
     ];
 
+    const LGTM = 0x1f38b;
+
     /**
      * @return string
      */
     public static function generateRandomEmoji(): string
     {
+        // 25% chance for a LGTM emote. 🎋
+        if(rand(1, 4) === 4) {
+            return html_entity_decode('&#'.self::LGTM.';', 0, 'UTF-8');
+        }
+
         $output = [];
         foreach(self::UNICODE_RANGES as $range){
             for($unicode = $range[0]; $unicode <= $range[1]; $unicode++){
